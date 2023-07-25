@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lhg.mytodo.application.service.TaskService;
-import com.lhg.mytodo.commons.LocationUri;
+import com.lhg.mytodo.ui.commons.LocationUri;
 import com.lhg.mytodo.ui.model.CreateTaskRequest;
 import com.lhg.mytodo.ui.model.PresentationalTask;
 import com.lhg.mytodo.ui.model.PresentationalTaskMapper;
 import com.lhg.mytodo.ui.model.PresentationalTaskStatus;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -43,7 +44,7 @@ public class TaskResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<String> create(@RequestBody CreateTaskRequest createTaskRequest) {
+	public ResponseEntity<String> create(@RequestBody @Valid CreateTaskRequest createTaskRequest) {
 		String createdId = taskService.create(mapper.toTask(createTaskRequest));
 		return ResponseEntity.created(LocationUri.fromRequest(createdId)).build();
 	}

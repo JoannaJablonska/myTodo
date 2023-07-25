@@ -1,4 +1,4 @@
-package com.lhg.mytodo.commons;
+package com.lhg.mytodo.ui.commons;
 
 import java.net.URI;
 
