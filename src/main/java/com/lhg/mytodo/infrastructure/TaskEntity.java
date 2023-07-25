@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-@ToString
+//@ToString
 public class TaskEntity {
 
 	@Id

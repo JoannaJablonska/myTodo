@@ -4,17 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.lhg.mytodo.core.model.Task;
 import com.lhg.mytodo.application.repository.TaskRepository;
+import com.lhg.mytodo.core.model.Task;
 import com.lhg.mytodo.core.model.TaskStatus;
 import com.lhg.mytodo.infrastructure.TaskEntity;
 import com.lhg.mytodo.infrastructure.TaskEntityMapper;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 
 @Service
-@Log
 @RequiredArgsConstructor
 public class TaskService {
 
@@ -27,13 +25,12 @@ public class TaskService {
 	}
 
 	public Task getById(final String id) {
-		return mapper.toTask(taskRepository.getReferenceById(id));
+		return mapper.toTask(taskRepository.findById(id).get());
 	}
 
 	public String create(final Task task) {
 		final Task taskToCreate = prepareTaskForCreation(task);
 		final TaskEntity createdTask = taskRepository.saveAndFlush(mapper.toTaskEntity(taskToCreate));
-		log.severe("oh no::" + createdTask);
 		return createdTask.getId();
 	}
 
@@ -44,5 +41,11 @@ public class TaskService {
 				.description(task.getDescription())
 				.due(task.getDue())
 				.build();
+	}
+
+	public void changeStatus(final String id, final TaskStatus taskStatus) {
+		final TaskEntity taskToChange = taskRepository.findById(id).get();
+		taskToChange.setStatus(taskStatus);
+		taskRepository.save(taskToChange);
 	}
 }

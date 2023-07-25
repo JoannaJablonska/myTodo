@@ -15,6 +15,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/tasks/0a406954-a66f-4072-b3ec-f369524ed8ca
+GET http://localhost:8080/tasks/57644aa6-3a79-4faf-a12e-4a73d521e548
+Accept: application/json
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/tasks/57644aa6-3a79-4faf-a12e-4a73d521e548?status=IN_PROGRESS
 Accept: application/json
 Content-Type: application/json
