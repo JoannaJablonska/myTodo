@@ -15,7 +15,5 @@ public interface PresentationalTaskMapper {
 
 	List<PresentationalTask> toMultiplePresentationalTasks(List<Task> task);
 
-	Task toTask(PresentationalTask presentationalTask);
-
 	Task toTask(CreateTaskRequest createTaskRequest);
 }

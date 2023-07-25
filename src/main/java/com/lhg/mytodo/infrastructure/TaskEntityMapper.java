@@ -3,11 +3,9 @@ package com.lhg.mytodo.infrastructure;
 import java.util.List;
 
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 
 import com.lhg.mytodo.core.model.Task;
 
-@Component
 @Mapper(componentModel = "spring")
 public interface TaskEntityMapper {
 

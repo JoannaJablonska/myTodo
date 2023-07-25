@@ -1,21 +1,26 @@
 package com.lhg.mytodo.infrastructure;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.lhg.mytodo.core.model.TaskStatus;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity(name = "Task")
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(of = "id")
+@ToString
 public class TaskEntity {
 
 	@Id
-	String id;
+	String id = UUID.randomUUID().toString();
 
 	TaskStatus status;
 

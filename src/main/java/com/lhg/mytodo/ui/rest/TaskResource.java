@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lhg.mytodo.application.service.TaskService;
@@ -17,7 +18,8 @@ import com.lhg.mytodo.ui.model.PresentationalTaskMapper;
 
 import lombok.RequiredArgsConstructor;
 
-@RestController("/tasks")
+@RestController
+@RequestMapping("/tasks")
 @RequiredArgsConstructor
 public class TaskResource {
 
